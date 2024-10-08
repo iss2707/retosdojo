@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retos de E-Sports</title>
+    <title>Retos de E-Sports (Editable)</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -28,22 +28,8 @@
             background-color: #007BFF;
             color: white;
         }
-        form {
-            margin: 20px 0;
-            padding: 10px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        input, select {
-            margin: 10px 0;
-            padding: 10px;
-            width: calc(100% - 22px);
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
         button {
-            padding: 10px;
+            padding: 10px 15px;
             background-color: #007BFF;
             color: white;
             border: none;
@@ -53,17 +39,26 @@
         button:hover {
             background-color: #0056b3;
         }
-        .edit-btn {
-            background-color: #28a745;
+        a {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
         }
-        .edit-btn:hover {
-            background-color: #218838;
+        a:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
 
-    <h1>Retos de E-Sports</h1>
+    <h1>Retos de E-Sports (Editable)</h1>
+    
+    <!-- Link to view-only version -->
+    <a href="retos_visualizacion.html">Ver solo lectura</a>
     
     <table>
         <thead>
@@ -75,125 +70,92 @@
                 <th>DIA</th>
                 <th>HORA</th>
                 <th>GANADOR</th>
-                <th>ACCIONES</th>
+                <th>Acciones</th>
             </tr>
         </thead>
-        <tbody id="retos-tbody">
+        <tbody id="retosTableBody">
             <tr data-id="1">
                 <td>1</td>
-                <td>Navi vs Piero</td>
-                <td>10 Soles</td>
-                <td>FT 10</td>
-                <td></td>
-                <td></td>
-                <td>PIERO</td>
-                <td><button class="edit-btn" onclick="editReto(1)">Editar</button></td>
+                <td><input type="text" value="Navi vs Piero"></td>
+                <td><input type="text" value="10 Soles"></td>
+                <td><input type="text" value="FT 10"></td>
+                <td><input type="text" value=""></td>
+                <td><input type="text" value=""></td>
+                <td><input type="text" value="PIERO"></td>
+                <td><button onclick="editarReto(this)">Guardar</button></td>
             </tr>
             <tr data-id="2">
                 <td>2</td>
-                <td>Vaddyr vs Navi</td>
-                <td>10 Soles</td>
-                <td>FT 10</td>
-                <td>martes 8/10</td>
-                <td>6:30 pm</td>
-                <td></td>
-                <td><button class="edit-btn" onclick="editReto(2)">Editar</button></td>
+                <td><input type="text" value="Vaddyr vs Navi"></td>
+                <td><input type="text" value="10 Soles"></td>
+                <td><input type="text" value="FT 10"></td>
+                <td><input type="text" value="martes 8/10"></td>
+                <td><input type="text" value="6:30 pm"></td>
+                <td><input type="text" value=""></td>
+                <td><button onclick="editarReto(this)">Guardar</button></td>
             </tr>
             <tr data-id="3">
                 <td>3</td>
-                <td>Navi vs Rishow</td>
-                <td>a la mitad</td>
-                <td>FT 10</td>
-                <td>miércoles 9/10</td>
-                <td>6:00 pm</td>
-                <td></td>
-                <td><button class="edit-btn" onclick="editReto(3)">Editar</button></td>
+                <td><input type="text" value="Navi vs Rishow"></td>
+                <td><input type="text" value="a la mitad"></td>
+                <td><input type="text" value="FT 10"></td>
+                <td><input type="text" value="miércoles 9/10"></td>
+                <td><input type="text" value="6:00 pm"></td>
+                <td><input type="text" value=""></td>
+                <td><button onclick="editarReto(this)">Guardar</button></td>
             </tr>
             <tr data-id="4">
                 <td>4</td>
-                <td>Willy vs Henry</td>
-                <td>10 soles</td>
-                <td>2 ft 5</td>
-                <td>viernes 11/10</td>
-                <td></td>
-                <td></td>
-                <td><button class="edit-btn" onclick="editReto(4)">Editar</button></td>
+                <td><input type="text" value="Willy vs Henry"></td>
+                <td><input type="text" value="10 soles"></td>
+                <td><input type="text" value="2 ft 5"></td>
+                <td><input type="text" value="viernes 11/10"></td>
+                <td><input type="text" value=""></td>
+                <td><input type="text" value=""></td>
+                <td><button onclick="editarReto(this)">Guardar</button></td>
             </tr>
         </tbody>
     </table>
 
-    <form id="add-reto-form">
-        <h2 id="form-title">Agregar nuevo reto</h2>
-        <input type="hidden" id="reto-id">
-        <input type="text" id="retos" placeholder="Retos (ej: Navi vs Piero)" required>
-        <input type="text" id="apuesta" placeholder="Apuesta (ej: 10 Soles)" required>
-        <input type="text" id="ft" placeholder="FT (ej: FT 10)" required>
-        <input type="text" id="dia" placeholder="Día (ej: martes 8/10)" required>
-        <input type="text" id="hora" placeholder="Hora (ej: 6:30 pm)" required>
-        <input type="text" id="ganador" placeholder="Ganador (opcional)">
-        <button type="submit">Agregar/Editar Reto</button>
-    </form>
+    <button onclick="agregarFila()">Agregar Reto</button>
 
     <script>
-        let retoCount = 4; // Contador de ID para nuevos retos
+        function editarReto(btn) {
+            const row = btn.closest('tr');
+            const id = row.dataset.id;
+            const inputs = row.querySelectorAll('input');
+            const retoData = {
+                id: id,
+                retos: inputs[0].value,
+                apuesta: inputs[1].value,
+                ft: inputs[2].value,
+                dia: inputs[3].value,
+                hora: inputs[4].value,
+                ganador: inputs[5].value
+            };
+            console.log("Guardando reto:", retoData);
+            // Aquí se puede implementar la lógica para guardar los datos actualizados.
+        }
 
-        document.getElementById('add-reto-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Evita el envío del formulario
+        function agregarFila() {
+            const tableBody = document.getElementById('retosTableBody');
+            const newId = tableBody.rows.length + 1;
+            const newRow = document.createElement('tr');
+            newRow.setAttribute('data-id', newId);
 
-            // Obtener valores del formulario
-            const id = document.getElementById('reto-id').value;
-            const reto = document.getElementById('retos').value;
-            const apuesta = document.getElementById('apuesta').value;
-            const ft = document.getElementById('ft').value;
-            const dia = document.getElementById('dia').value;
-            const hora = document.getElementById('hora').value;
-            const ganador = document.getElementById('ganador').value;
-
-            if (id) {
-                // Editar reto existente
-                const row = document.querySelector(`tr[data-id="${id}"]`);
-                row.children[1].textContent = reto;
-                row.children[2].textContent = apuesta;
-                row.children[3].textContent = ft;
-                row.children[4].textContent = dia;
-                row.children[5].textContent = hora;
-                row.children[6].textContent = ganador;
-            } else {
-                // Crear una nueva fila en la tabla
-                retoCount++;
-                const newRow = document.createElement('tr');
-                newRow.setAttribute('data-id', retoCount);
-                newRow.innerHTML = `
-                    <td>${retoCount}</td>
-                    <td>${reto}</td>
-                    <td>${apuesta}</td>
-                    <td>${ft}</td>
-                    <td>${dia}</td>
-                    <td>${hora}</td>
-                    <td>${ganador}</td>
-                    <td><button class="edit-btn" onclick="editReto(${retoCount})">Editar</button></td>
-                `;
-                // Agregar la nueva fila a la tabla
-                document.getElementById('retos-tbody').appendChild(newRow);
-            }
-
-            // Limpiar el formulario
-            document.getElementById('add-reto-form').reset();
-            document.getElementById('reto-id').value = '';
-            document.getElementById('form-title').textContent = 'Agregar nuevo reto';
-        });
-
-        function editReto(id) {
-            const row = document.querySelector(`tr[data-id="${id}"]`);
-            document.getElementById('reto-id').value = id;
-            document.getElementById('retos').value = row.children[1].textContent;
-            document.getElementById('apuesta').value = row.children[2].textContent;
-            document.getElementById('ft').value = row.children[3].textContent;
-            document.getElementById('dia').value = row.children[4].textContent;
-            document.getElementById('hora').value = row.children[5].textContent;
-            document.getElementById('ganador').value = row.children[6].textContent;
-            document.getElementById('form-title').textContent = 'Editar reto';
+            newRow.innerHTML = `
+                <td>${newId}</td>
+                <td><input type="text" value=""></td>
+                <td><input type="text" value=""></td>
+                <td><input type="text" value=""></td>
+                <td><input type="text" value=""></td>
+                <td><input type="text" value=""></td>
+                <td><input type="text" value=""></td>
+                <td><button onclick="editarReto(this)">Guardar</button></td>
+            `;
+            tableBody.appendChild(newRow);
         }
     </script>
+
 </body>
 </html>
